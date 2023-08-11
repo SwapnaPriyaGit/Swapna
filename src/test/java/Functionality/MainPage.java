@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,9 +17,12 @@ import java.util.Properties;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -27,14 +31,36 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import ObjectRepository.Elements;
 import ObjectRepository.contact;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-@Listeners (ListenerC.class)
 public class MainPage {
 	public WebDriver driver;
 	WebDriverWait wait;
+	ExtentHtmlReporter htmlReporter;
+	ExtentReports extent;
+	ExtentTest test;
+	
+	@BeforeClass
+	public void setUp1() {
+		htmlReporter= new ExtentHtmlReporter("extentreportT.html");
+		extent=new ExtentReports();
+		extent.attachReporter(htmlReporter);
+		
+	}
+	
+	@AfterClass
+	public void tearDown1() {
+		extent.flush();
+	}
+		
 		
 	@BeforeMethod
 	public void beforeMethod() throws InterruptedException {
@@ -42,6 +68,7 @@ public class MainPage {
 		driver=new ChromeDriver();
 		
 	}
+
 	
 	@AfterMethod
 	public void afterMethod() {
@@ -78,13 +105,15 @@ public class MainPage {
 		 * Iterator<WebElement> itr=menu.iterator(); while(itr.hasNext()) {
 		 * System.out.println("Title : "+itr.next().getText()); }
 		 */
-	
-			
+		
 	}
 
 	@SuppressWarnings("static-access")
 	@Test
 	public void ContactUs() throws InterruptedException, IOException, AWTException {
+		
+		test=extent.createTest("Contact Us Page Automation");
+		
 		contact contactUs = PageFactory.initElements(driver, contact.class);
 		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
 		Properties contactDetails=new Properties();
@@ -103,18 +132,25 @@ public class MainPage {
 		  
 		Select Country=new Select(contactUs.countryList);
 		Country.selectByVisibleText(contactDetails.getProperty("countryName"));
+		TakesScreenshot ts1=(TakesScreenshot) driver;
+		File Src1 = ts1.getScreenshotAs(OutputType.FILE);
+		File dest1=new File("ContactUs_Screen1.png");
+		FileHandler.copy(Src1, dest1);
+		test.addScreenCaptureFromPath("ContactUs_Screen1.png");
 		
 		Select relationship=new Select(contactUs.relationship);
 		relationship.selectByVisibleText(contactDetails.getProperty("relationship"));
+
 		  
 		contactUs.comments.sendKeys(contactDetails.getProperty("comments"));
-		
+		test.log(Status.INFO, "Provided all contact details");
+				
 		contactUs.fileUpload.click();
 		Thread.sleep(2000);
 		Robot robo = new Robot();
 		StringSelection Str=new StringSelection("C:\\Users\\swapnapriya.kura\\OneDrive - HCL Technologies Ltd\\Documents\\SDET Software\\Test File Upload.docx");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(Str, null);
-		
+				
 		robo.keyPress(KeyEvent.VK_CONTROL);
 		robo.keyPress(KeyEvent.VK_V);
 		robo.keyRelease(KeyEvent.VK_CONTROL);
@@ -123,7 +159,18 @@ public class MainPage {
 	    robo.keyRelease(KeyEvent.VK_ENTER);
 	    Thread.sleep(3000);
 	    contactUs.privacyPolicy.click();
-	    Thread.sleep(10000);
+	    test.log(Status.INFO, "Uploaded Contact document");
+	    
+	    Thread.sleep(5000);
+	    
+		TakesScreenshot ts2=(TakesScreenshot) driver;
+		File Src2 = ts2.getScreenshotAs(OutputType.FILE);
+		File dest2=new File("ContactUs_Screen2.png");
+		FileHandler.copy(Src2, dest2);
+		test.addScreenCaptureFromPath("ContactUs_Screen2.png");
+		//Thread.sleep(5000);
+	    
+	    test.pass("Contact Us Page automation success");
 	    
 
 		

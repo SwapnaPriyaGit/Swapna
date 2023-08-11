@@ -5,8 +5,10 @@
     <classes>
       <class name="Functionality.MainPage">
         <methods>
+          <include name="setUp1"/>
           <include name="beforeMethod"/>
           <include name="ContactUs"/>
+          <include name="tearDown1"/>
           <include name="afterMethod"/>
         </methods>
       </class> <!-- Functionality.MainPage -->
