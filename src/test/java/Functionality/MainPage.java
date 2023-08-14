@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,6 +14,8 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+
+import javax.imageio.ImageIO;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -40,6 +43,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import ObjectRepository.Elements;
 import ObjectRepository.contact;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 public class MainPage {
 	public WebDriver driver;
@@ -49,11 +54,11 @@ public class MainPage {
 	ExtentTest test;
 	
 	@BeforeClass
-	public void setUp1() {
+	public void setUp1() throws IOException {
 		htmlReporter= new ExtentHtmlReporter("extentreportT.html");
 		extent=new ExtentReports();
 		extent.attachReporter(htmlReporter);
-		
+	
 	}
 	
 	@AfterClass
@@ -114,11 +119,11 @@ public class MainPage {
 		
 		test=extent.createTest("Contact Us Page Automation");
 		
-		contact contactUs = PageFactory.initElements(driver, contact.class);
 		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
 		Properties contactDetails=new Properties();
 		contactDetails.load(input);
 		
+		contact contactUs = PageFactory.initElements(driver, contact.class);
 		driver.get(contactDetails.getProperty("applicationUrl"));
 		driver.manage().window().maximize();
 		Thread.sleep(3000);
@@ -171,8 +176,66 @@ public class MainPage {
 		//Thread.sleep(5000);
 	    
 	    test.pass("Contact Us Page automation success");
+	    		
+	}
+	
+	@Test
+	public void compareScreenshot() throws IOException, InterruptedException {
+		
+		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
+		Properties contactDetails=new Properties();
+		contactDetails.load(input);
+		
+		driver.manage().deleteAllCookies();
+		driver.get(contactDetails.getProperty("applicationUrl"));
+		driver.manage().window().maximize();
+		
+		TakesScreenshot ts3=(TakesScreenshot) driver;
+		File Src3 = ts3.getScreenshotAs(OutputType.FILE);
+		File dest3=new File("CompareScreen_Actual.png");
+		FileHandler.copy(Src3, dest3);
+		
+		test=extent.createTest("Image Comparision for matching images");
+		
+		test.addScreenCaptureFromPath("CompareScreen_Actual.png");
+		test.addScreenCaptureFromPath("CompareScreen_ExpMatch.png");
+		
+		BufferedImage ImageExp=ImageIO.read(new File("CompareScreen_ExpMatch.png"));
+		BufferedImage ImageAct=ImageIO.read(new File("CompareScreen_Actual.png"));
+		
+		ImageDiffer imageCompare=new ImageDiffer(); 
+		ImageDiff Bool=imageCompare.makeDiff(ImageExp, ImageAct);
+		
+		if(Bool.hasDiff()==true)
+			{
+			test.fail("Image not matching");
 	    
-
+			}
+		else
+		{
+			test.pass("Images matching");
+		}
+		
+		test=extent.createTest("Image Comparision for non matching images");
+		
+		test.addScreenCaptureFromPath("CompareScreen_Actual.png");
+		test.addScreenCaptureFromPath("CompareScreen_ExpNoMatch.png");
+		
+		BufferedImage ImageExp1=ImageIO.read(new File("CompareScreen_ExpNoMatch.png"));
+		BufferedImage ImageAct1=ImageIO.read(new File("CompareScreen_Actual.png"));
+		
+		ImageDiffer imageCompare1=new ImageDiffer(); 
+		ImageDiff Bool1=imageCompare1.makeDiff(ImageExp1, ImageAct1);
+		
+		if(Bool1.hasDiff()==true)
+			{
+			test.fail("Image not matching");
+	    
+			}
+		else
+		{
+			test.pass("Images matching");
+		}	
 		
 	}
 }
