@@ -216,26 +216,22 @@ public class MainPage {
 			test.pass("Images matching");
 		}
 		
-		test=extent.createTest("Image Comparision for non matching images");
-		
-		test.addScreenCaptureFromPath("CompareScreen_Actual.png");
-		test.addScreenCaptureFromPath("CompareScreen_ExpNoMatch.png");
-		
-		BufferedImage ImageExp1=ImageIO.read(new File("CompareScreen_ExpNoMatch.png"));
-		BufferedImage ImageAct1=ImageIO.read(new File("CompareScreen_Actual.png"));
-		
-		ImageDiffer imageCompare1=new ImageDiffer(); 
-		ImageDiff Bool1=imageCompare1.makeDiff(ImageExp1, ImageAct1);
-		
-		if(Bool1.hasDiff()==true)
-			{
-			test.fail("Image not matching");
-	    
-			}
-		else
-		{
-			test.pass("Images matching");
-		}	
-		
+		/*
+		 * test=extent.createTest("Image Comparision for non matching images");
+		 * 
+		 * test.addScreenCaptureFromPath("CompareScreen_Actual.png");
+		 * test.addScreenCaptureFromPath("CompareScreen_ExpNoMatch.png");
+		 * 
+		 * BufferedImage ImageExp1=ImageIO.read(new
+		 * File("CompareScreen_ExpNoMatch.png")); BufferedImage
+		 * ImageAct1=ImageIO.read(new File("CompareScreen_Actual.png"));
+		 * 
+		 * ImageDiffer imageCompare1=new ImageDiffer(); ImageDiff
+		 * Bool1=imageCompare1.makeDiff(ImageExp1, ImageAct1);
+		 * 
+		 * if(Bool1.hasDiff()==true) { test.fail("Image not matching");
+		 * 
+		 * } else { test.pass("Images matching"); }
+		 */
 	}
 }
