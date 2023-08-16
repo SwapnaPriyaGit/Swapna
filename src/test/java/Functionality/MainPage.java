@@ -139,9 +139,9 @@ public class MainPage {
 		Country.selectByVisibleText(contactDetails.getProperty("countryName"));
 		TakesScreenshot ts1=(TakesScreenshot) driver;
 		File Src1 = ts1.getScreenshotAs(OutputType.FILE);
-		File dest1=new File("ContactUs_Screen1.png");
+		File dest1=new File("Screenshots\\ContactUs_Screen1.png");
 		FileHandler.copy(Src1, dest1);
-		test.addScreenCaptureFromPath("ContactUs_Screen1.png");
+		test.addScreenCaptureFromPath("Screenshots\\ContactUs_Screen1.png");
 		
 		Select relationship=new Select(contactUs.relationship);
 		relationship.selectByVisibleText(contactDetails.getProperty("relationship"));
@@ -170,9 +170,9 @@ public class MainPage {
 	    
 		TakesScreenshot ts2=(TakesScreenshot) driver;
 		File Src2 = ts2.getScreenshotAs(OutputType.FILE);
-		File dest2=new File("ContactUs_Screen2.png");
+		File dest2=new File("Screenshots\\ContactUs_Screen2.png");
 		FileHandler.copy(Src2, dest2);
-		test.addScreenCaptureFromPath("ContactUs_Screen2.png");
+		test.addScreenCaptureFromPath("Screenshots\\ContactUs_Screen2.png");
 		//Thread.sleep(5000);
 	    
 	    test.pass("Contact Us Page automation success");
@@ -182,6 +182,7 @@ public class MainPage {
 	@SuppressWarnings("static-access")
 	@Test
 	public void Case2_compareScreenshot() throws IOException, InterruptedException {
+		test=extent.createTest("Image Comparision for matching images");
 		
 		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
 		Properties contactDetails=new Properties();
@@ -203,20 +204,18 @@ public class MainPage {
 	    test.info("Retrieved actual screenshot");
 		TakesScreenshot ts3=(TakesScreenshot) driver;
 		File Src3 = ts3.getScreenshotAs(OutputType.FILE);
-		File dest3=new File("CompareScreen_Actual.png");
+		File dest3=new File("Screenshots\\CompareScreen_Actual.png");
 		FileHandler.copy(Src3, dest3);
-		
-		test=extent.createTest("Image Comparision for matching images");
-		
-		test.addScreenCaptureFromPath("CompareScreen_Actual.png");
-		test.addScreenCaptureFromPath("CompareScreen_ExpMatch.png");
+						
+		test.addScreenCaptureFromPath("Screenshots\\CompareScreen_Actual.png");
+		test.addScreenCaptureFromPath("Screenshots\\CompareScreen_ExpMatch.png");
 		
 		test.info("Retrieved actual screenshot");
-		BufferedImage ImageExp=ImageIO.read(new File("CompareScreen_ExpMatch.png"));
+		BufferedImage ImageExp=ImageIO.read(new File("Screenshots\\CompareScreen_ExpMatch.png"));
 		DataBuffer bufferInput=ImageExp.getData().getDataBuffer();
 		int sizeInput=bufferInput.getSize();
 		
-		BufferedImage ImageAct=ImageIO.read(new File("CompareScreen_Actual.png"));
+		BufferedImage ImageAct=ImageIO.read(new File("Screenshots\\CompareScreen_Actual.png"));
 		DataBuffer bufferOutput=ImageAct.getData().getDataBuffer();
 		int sizeOutput=bufferOutput.getSize();
 		
@@ -294,7 +293,7 @@ public class MainPage {
 		
 		test.info("Retrieved text from application");
 		
-		File textFile=new File("textFile.txt");
+		File textFile=new File("Screenshots\\textFile.txt");
 		try {
 			textFile.createNewFile();
 			FileWriter writer=new FileWriter(textFile);
