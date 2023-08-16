@@ -6,9 +6,12 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -25,6 +28,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -80,42 +84,38 @@ public class MainPage {
 		driver.quit();
 	}
 	
-	//@Test
-	public void mainPageTest() {
-		/*
-	 	//List <WebElement> list1= driver.findElements(By.xpath("//*[@class=\"header-services-menu header-full-width-menu nav-item menu-item--expanded dropdown\"]/ul/li/ul/li"));
-		//System.out.println("No of infomrative links under Services : "+ list1.size());
-		System.out.println("No of infomrative links under Services : "+ Elements.services.size());
+	@Test
+	public void Case1_MenuListTest() throws IOException, InterruptedException {
+	    test=extent.createTest("Menu List Automation");
 		
-		//List <WebElement> list2= driver.findElements(By.xpath("//*[@class=\"header-industries-menu header-full-width-menu nav-item menu-item--expanded dropdown\"]/ul/li"));
-		//System.out.println("No of infomrative links under Industries : "+ list2.size());
-		System.out.println("No of infomrative links under Industries : "+ Elements.industires.size());
+		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
+		Properties contactDetails=new Properties();
+		contactDetails.load(input);
 		
-		//List <WebElement> list3= driver.findElements(By.xpath("//*[@class=\"header-about-menu nav-item menu-item--expanded dropdown\"]/ul/li"));
-		//System.out.println("No of infomrative links under About Us : "+ list3.size());
-		System.out.println("No of infomrative links under About Us : "+ Elements.aboutUs.size());
+		contact contactUs = PageFactory.initElements(driver, contact.class);
+		driver.get(contactDetails.getProperty("applicationUrl"));
+		driver.manage().window().maximize();
 		
-		//List <WebElement> list4= driver.findElements(By.xpath("//*[@class=\"header-insights-menu nav-item menu-item--expanded dropdown\"]/ul/li"));
-		//System.out.println("No of infomrative links under Trends and Insights : "+ list4.size());
-		System.out.println("No of infomrative links under Trends and Insights : "+ Elements.trendsAndInsights.size());
+	 	List <WebElement> MenuList= driver.findElements(By.xpath("//*[@id=\"block-mainnavigationbt\"]/ul/li/a"));
+		System.out.println("No of informative links in Menu section : "+ MenuList.size());
+		test.info("No of informative links in Menu section :"+ MenuList.size());
 		
-		//List <WebElement> list5= driver.findElements(By.xpath("//*[@class=\"header-careers-menu nav-item menu-item--expanded dropdown\"]/ul/li"));
-		//System.out.println("No of infomrative links under Careers : "+ list5.size());
-		System.out.println("No of infomrative links under Careers : "+ Elements.careers.size());
+		//String Text="";
 		
-		
-		
-		 * List<WebElement>
-		 * menu=driver.findElements(By.xpath("//*[@id=\"block-mainnavigationbt\"]/li"));
-		 * Iterator<WebElement> itr=menu.iterator(); while(itr.hasNext()) {
-		 * System.out.println("Title : "+itr.next().getText()); }
-		 */
+		Iterator<WebElement> itr=MenuList.iterator();
+		while(itr.hasNext())
+		{
+			System.out.println("Menu Item : "+itr.next().getAttribute("title"));
+			//Text=Text+itr.next().getAttribute("title")+"\n";
+		}
+		test.pass("Menu Items retreived successfully");
+			
 		
 	}
 
 	@SuppressWarnings("static-access")
 	@Test
-	public void ContactUs() throws InterruptedException, IOException, AWTException {
+	public void Case3_ContactUs() throws InterruptedException, IOException, AWTException {
 		
 		test=extent.createTest("Contact Us Page Automation");
 		
@@ -179,17 +179,28 @@ public class MainPage {
 	    		
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
-	public void compareScreenshot() throws IOException, InterruptedException {
+	public void Case2_compareScreenshot() throws IOException, InterruptedException {
 		
 		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
 		Properties contactDetails=new Properties();
 		contactDetails.load(input);
-		
+		contact contactUs = PageFactory.initElements(driver, contact.class);
+
 		driver.manage().deleteAllCookies();
 		driver.get(contactDetails.getProperty("applicationUrl"));
 		driver.manage().window().maximize();
+		Thread.sleep(2000);		
+	    contactUs.acceptCookies.click();
+	    Thread.sleep(1000);
+	    
+	    contactUs.investorLink.click();
+	    Thread.sleep(1000);
+	    contactUs.whyHCLLink.click();
+	    Thread.sleep(2000);
 		
+	    test.info("Retrieved actual screenshot");
 		TakesScreenshot ts3=(TakesScreenshot) driver;
 		File Src3 = ts3.getScreenshotAs(OutputType.FILE);
 		File dest3=new File("CompareScreen_Actual.png");
@@ -200,38 +211,104 @@ public class MainPage {
 		test.addScreenCaptureFromPath("CompareScreen_Actual.png");
 		test.addScreenCaptureFromPath("CompareScreen_ExpMatch.png");
 		
+		test.info("Retrieved actual screenshot");
 		BufferedImage ImageExp=ImageIO.read(new File("CompareScreen_ExpMatch.png"));
+		DataBuffer bufferInput=ImageExp.getData().getDataBuffer();
+		int sizeInput=bufferInput.getSize();
+		
 		BufferedImage ImageAct=ImageIO.read(new File("CompareScreen_Actual.png"));
+		DataBuffer bufferOutput=ImageAct.getData().getDataBuffer();
+		int sizeOutput=bufferOutput.getSize();
 		
-		ImageDiffer imageCompare=new ImageDiffer(); 
-		ImageDiff Bool=imageCompare.makeDiff(ImageExp, ImageAct);
-		
-		if(Bool.hasDiff()==true)
+        Boolean matchFlag=true;
+        test.info("comparing both actual and expected screenshot");
+		if(sizeInput==sizeOutput)
 			{
-			test.fail("Image not matching");
-	    
+			for(int i=0;i< sizeInput;i++) {
+				if(bufferInput.getElem(i)!=bufferOutput.getElem(i)) {
+					matchFlag=false;
+					break;
+					
+				}
+			}
+				    
 			}
 		else
+		{ 
+			matchFlag=false;
+			
+		}
+		if(matchFlag==true)
+		{ 
+			test.pass("Images Matching");}
+		else 
 		{
-			test.pass("Images matching");
+			 test.fail("Images not Matching");
 		}
 		
-		/*
-		 * test=extent.createTest("Image Comparision for non matching images");
-		 * 
-		 * test.addScreenCaptureFromPath("CompareScreen_Actual.png");
-		 * test.addScreenCaptureFromPath("CompareScreen_ExpNoMatch.png");
-		 * 
-		 * BufferedImage ImageExp1=ImageIO.read(new
-		 * File("CompareScreen_ExpNoMatch.png")); BufferedImage
-		 * ImageAct1=ImageIO.read(new File("CompareScreen_Actual.png"));
-		 * 
-		 * ImageDiffer imageCompare1=new ImageDiffer(); ImageDiff
-		 * Bool1=imageCompare1.makeDiff(ImageExp1, ImageAct1);
-		 * 
-		 * if(Bool1.hasDiff()==true) { test.fail("Image not matching");
-		 * 
-		 * } else { test.pass("Images matching"); }
-		 */
+		
+	}
+	
+	@Test
+	public void Case4_PageText() throws IOException, InterruptedException {
+		test=extent.createTest("Test Retrieval Automation");
+		
+		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
+		Properties contactDetails=new Properties();
+		contactDetails.load(input);
+		
+		contact contactUs = PageFactory.initElements(driver, contact.class);
+		driver.get(contactDetails.getProperty("applicationUrl"));
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+	    contactUs.acceptCookies.click();
+	    
+		Actions act=new Actions(driver);
+		act.moveToElement(driver.findElement(By.xpath("//*[@id=\"block-mainnavigationbt\"]/ul/li[8]/a")));
+		act.build().perform();
+		Thread.sleep(2000);
+		driver.findElement(By.partialLinkText("Annual Report 2022")).click();
+		
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,1000)");
+		
+		Thread.sleep(2000);
+		
+		String Text1=driver.findElement(By.xpath("//*[@class=\"col-md-6 col-lg-6 col-xl-7\"]/p[1]")).getText();
+		//System.out.println(Text1);
+		String Text2=driver.findElement(By.xpath("//*[@class=\"col-md-6 col-lg-6 col-xl-7\"]/p[2]")).getText();
+		//System.out.println(Text2);
+		
+		String Text3="";
+		List <WebElement> textList=driver.findElements(By.xpath("//*[@class=\"col-md-6 col-lg-6 col-xl-7\"]/ul/li"));
+		Iterator<WebElement> itr=textList.iterator();
+		while(itr.hasNext())
+		{
+			Text3=Text3+itr.next().getText()+"\n";			
+		}
+		//System.out.println(Text3);
+		
+		String Text=Text1+"\n"+Text2+"\n"+Text3;
+		System.out.println(Text);
+		
+		test.info("Retrieved text from application");
+		
+		File textFile=new File("textFile.txt");
+		try {
+			textFile.createNewFile();
+			FileWriter writer=new FileWriter(textFile);
+			BufferedWriter bwriter=new BufferedWriter(writer);
+			
+			bwriter.write(Text);
+			bwriter.close();
+			writer.close();
+			test.pass("Information added successfuly into a text file.");
+					}
+		catch(Exception e) {
+			e.printStackTrace();
+			test.fail("Unable to add infomration to text file");
+		}
+
 	}
 }

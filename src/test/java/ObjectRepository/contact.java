@@ -11,6 +11,12 @@ public class contact {
 	@FindBy(xpath="//*[@title=\"Contact Us\"]")
 	public static WebElement contactLink;
 	
+	@FindBy(xpath="//*[@title=\"Investor Relations\"]")
+	public static WebElement investorLink;
+	
+	@FindBy(xpath="//*[@id=\"block-secondarymenublock\"]/div/div/div/div[2]/ul/li[5]/a")
+	public static WebElement whyHCLLink;
+	
 	@FindBy(id="onetrust-accept-btn-handler")
 	public static WebElement acceptCookies;
 		
