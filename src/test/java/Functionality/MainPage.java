@@ -59,7 +59,7 @@ public class MainPage {
 	
 	@BeforeClass
 	public void setUp1() throws IOException {
-		htmlReporter= new ExtentHtmlReporter("test-output\\extentreportT.html");
+		htmlReporter= new ExtentHtmlReporter("extentreportT.html");
 		extent=new ExtentReports();
 		extent.attachReporter(htmlReporter);
 	
