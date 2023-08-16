@@ -2,64 +2,64 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-16T16:28:55 IST" name="Default suite" finished-at="2023-08-16T16:30:38 IST" duration-ms="102312">
+  <suite started-at="2023-08-16T16:46:05 IST" name="Default suite" finished-at="2023-08-16T16:47:49 IST" duration-ms="104475">
     <groups>
     </groups>
-    <test started-at="2023-08-16T16:28:55 IST" name="Default test" finished-at="2023-08-16T16:30:38 IST" duration-ms="102312">
+    <test started-at="2023-08-16T16:46:05 IST" name="Default test" finished-at="2023-08-16T16:47:49 IST" duration-ms="104475">
       <class name="Functionality.MainPage">
-        <test-method is-config="true" signature="setUp1()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:28:55 IST" name="setUp1" finished-at="2023-08-16T16:28:56 IST" duration-ms="351" status="PASS">
+        <test-method is-config="true" signature="setUp1()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:05 IST" name="setUp1" finished-at="2023-08-16T16:46:05 IST" duration-ms="267" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp1 -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:28:56 IST" name="beforeMethod" finished-at="2023-08-16T16:29:06 IST" duration-ms="9974" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:05 IST" name="beforeMethod" finished-at="2023-08-16T16:46:15 IST" duration-ms="9693" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case1_MenuListTest()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:06 IST" name="Case1_MenuListTest" finished-at="2023-08-16T16:29:11 IST" duration-ms="5343" status="PASS">
+        <test-method signature="Case1_MenuListTest()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:15 IST" name="Case1_MenuListTest" finished-at="2023-08-16T16:46:19 IST" duration-ms="4245" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case1_MenuListTest -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:11 IST" name="afterMethod" finished-at="2023-08-16T16:29:12 IST" duration-ms="938" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:19 IST" name="afterMethod" finished-at="2023-08-16T16:46:20 IST" duration-ms="980" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:12 IST" name="beforeMethod" finished-at="2023-08-16T16:29:19 IST" duration-ms="6738" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:20 IST" name="beforeMethod" finished-at="2023-08-16T16:46:27 IST" duration-ms="6634" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case2_compareScreenshot()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:19 IST" name="Case2_compareScreenshot" finished-at="2023-08-16T16:29:35 IST" duration-ms="16537" status="PASS">
+        <test-method signature="Case2_compareScreenshot()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:27 IST" name="Case2_compareScreenshot" finished-at="2023-08-16T16:46:43 IST" duration-ms="16231" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case2_compareScreenshot -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:35 IST" name="afterMethod" finished-at="2023-08-16T16:29:36 IST" duration-ms="1058" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:43 IST" name="afterMethod" finished-at="2023-08-16T16:46:44 IST" duration-ms="1319" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:36 IST" name="beforeMethod" finished-at="2023-08-16T16:29:43 IST" duration-ms="6658" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:44 IST" name="beforeMethod" finished-at="2023-08-16T16:46:53 IST" duration-ms="9285" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case3_ContactUs()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:29:43 IST" name="Case3_ContactUs" finished-at="2023-08-16T16:30:13 IST" duration-ms="29912" status="PASS">
+        <test-method signature="Case3_ContactUs()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:46:53 IST" name="Case3_ContactUs" finished-at="2023-08-16T16:47:22 IST" duration-ms="28110" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case3_ContactUs -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:30:13 IST" name="afterMethod" finished-at="2023-08-16T16:30:14 IST" duration-ms="1277" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:47:22 IST" name="afterMethod" finished-at="2023-08-16T16:47:23 IST" duration-ms="1343" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:30:14 IST" name="beforeMethod" finished-at="2023-08-16T16:30:21 IST" duration-ms="6640" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:47:23 IST" name="beforeMethod" finished-at="2023-08-16T16:47:31 IST" duration-ms="7709" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case4_PageText()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:30:21 IST" name="Case4_PageText" finished-at="2023-08-16T16:30:36 IST" duration-ms="14932" status="PASS">
+        <test-method signature="Case4_PageText()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:47:31 IST" name="Case4_PageText" finished-at="2023-08-16T16:47:47 IST" duration-ms="16796" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case4_PageText -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:30:36 IST" name="afterMethod" finished-at="2023-08-16T16:30:37 IST" duration-ms="1261" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:47:47 IST" name="afterMethod" finished-at="2023-08-16T16:47:49 IST" duration-ms="1240" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="tearDown1()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:30:37 IST" name="tearDown1" finished-at="2023-08-16T16:30:38 IST" duration-ms="610" status="PASS">
+        <test-method is-config="true" signature="tearDown1()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-16T16:47:49 IST" name="tearDown1" finished-at="2023-08-16T16:47:49 IST" duration-ms="557" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown1 -->
