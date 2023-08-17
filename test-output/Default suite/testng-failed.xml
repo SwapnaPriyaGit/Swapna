@@ -9,6 +9,7 @@
           <include name="beforeMethod"/>
           <include name="Case2_compareScreenshot"/>
           <include name="tearDown1"/>
+          <include name="Case3_ContactUs"/>
           <include name="afterMethod"/>
         </methods>
       </class> <!-- Functionality.MainPage -->

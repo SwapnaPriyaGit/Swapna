@@ -59,7 +59,10 @@ public class MainPage {
 	
 	@BeforeClass
 	public void setUp1() throws IOException {
-		htmlReporter= new ExtentHtmlReporter("Reports\\extentreportT.html");
+		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
+		Properties contactDetails=new Properties();
+		contactDetails.load(input);
+		htmlReporter= new ExtentHtmlReporter(contactDetails.getProperty("extentReportsPath"));
 		extent=new ExtentReports();
 		extent.attachReporter(htmlReporter);
 	
@@ -155,7 +158,7 @@ public class MainPage {
 		Robot robo = new Robot();
 		StringSelection Str=new StringSelection("C:\\Users\\swapnapriya.kura\\OneDrive - HCL Technologies Ltd\\Documents\\SDET Software\\Test File Upload.docx");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(Str, null);
-				
+		Thread.sleep(3000);		
 		robo.keyPress(KeyEvent.VK_CONTROL);
 		robo.keyPress(KeyEvent.VK_V);
 		robo.keyRelease(KeyEvent.VK_CONTROL);
@@ -170,9 +173,9 @@ public class MainPage {
 	    
 		TakesScreenshot ts2=(TakesScreenshot) driver;
 		File Src2 = ts2.getScreenshotAs(OutputType.FILE);
-		File dest2=new File("Screenshots\\ContactUs_Screen2.png");
+		File dest2=new File(contactDetails.getProperty("Screenshots\\ContactUs_Screen2.png"));
 		FileHandler.copy(Src2, dest2);
-		test.addScreenCaptureFromPath("Screenshots\\ContactUs_Screen2.png");
+		test.addScreenCaptureFromPath(contactDetails.getProperty("Screenshots\\ContactUs_Screen2.png"));
 		//Thread.sleep(5000);
 	    
 	    test.pass("Contact Us Page automation success");
@@ -204,18 +207,18 @@ public class MainPage {
 	    test.info("Retrieved actual screenshot");
 		TakesScreenshot ts3=(TakesScreenshot) driver;
 		File Src3 = ts3.getScreenshotAs(OutputType.FILE);
-		File dest3=new File("Screenshots\\CompareScreen_Actual.png");
+		File dest3=new File(contactDetails.getProperty("CompareActImagePath"));
 		FileHandler.copy(Src3, dest3);
 						
-		test.addScreenCaptureFromPath("Screenshots\\CompareScreen_Actual.png");
-		test.addScreenCaptureFromPath("Screenshots\\CompareScreen_ExpMatch.png");
+		test.addScreenCaptureFromPath(contactDetails.getProperty("CompareActImagePath"));
+		test.addScreenCaptureFromPath(contactDetails.getProperty("CompareExpImagePath"));
 		
 		test.info("Retrieved actual screenshot");
-		BufferedImage ImageExp=ImageIO.read(new File("Screenshots\\CompareScreen_ExpMatch.png"));
+		BufferedImage ImageExp=ImageIO.read(new File(contactDetails.getProperty("CompareExpImagePath")));
 		DataBuffer bufferInput=ImageExp.getData().getDataBuffer();
 		int sizeInput=bufferInput.getSize();
 		
-		BufferedImage ImageAct=ImageIO.read(new File("Screenshots\\CompareScreen_Actual.png"));
+		BufferedImage ImageAct=ImageIO.read(new File(contactDetails.getProperty("CompareActImagePath")));
 		DataBuffer bufferOutput=ImageAct.getData().getDataBuffer();
 		int sizeOutput=bufferOutput.getSize();
 		
@@ -293,7 +296,7 @@ public class MainPage {
 		
 		test.info("Retrieved text from application");
 		
-		File textFile=new File("Screenshots\\textFile.txt");
+		File textFile=new File(contactDetails.getProperty("TextFilePath"));
 		try {
 			textFile.createNewFile();
 			FileWriter writer=new FileWriter(textFile);
