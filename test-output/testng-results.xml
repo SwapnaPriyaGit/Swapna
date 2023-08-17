@@ -1,140 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="2" failed="2" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-17T16:05:47 IST" name="Default suite" finished-at="2023-08-17T16:07:38 IST" duration-ms="110716">
+  <suite started-at="2023-08-17T18:22:10 IST" name="Default suite" finished-at="2023-08-17T18:28:33 IST" duration-ms="383553">
     <groups>
     </groups>
-    <test started-at="2023-08-17T16:05:47 IST" name="Default test" finished-at="2023-08-17T16:07:38 IST" duration-ms="110716">
+    <test started-at="2023-08-17T18:22:10 IST" name="Default test" finished-at="2023-08-17T18:28:33 IST" duration-ms="383553">
       <class name="Functionality.MainPage">
-        <test-method is-config="true" signature="setUp1()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:05:47 IST" name="setUp1" finished-at="2023-08-17T16:05:48 IST" duration-ms="333" status="PASS">
+        <test-method is-config="true" signature="setUp1()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:22:10 IST" name="setUp1" finished-at="2023-08-17T18:22:10 IST" duration-ms="448" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp1 -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:05:48 IST" name="beforeMethod" finished-at="2023-08-17T16:05:58 IST" duration-ms="10489" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:22:10 IST" name="beforeMethod" finished-at="2023-08-17T18:22:27 IST" duration-ms="16801" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case1_MenuListTest()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:05:58 IST" name="Case1_MenuListTest" finished-at="2023-08-17T16:06:03 IST" duration-ms="5002" status="PASS">
+        <test-method signature="Case1_MenuListTest()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:22:27 IST" name="Case1_MenuListTest" finished-at="2023-08-17T18:22:37 IST" duration-ms="9833" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case1_MenuListTest -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:06:03 IST" name="afterMethod" finished-at="2023-08-17T16:06:05 IST" duration-ms="1155" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:22:37 IST" name="afterMethod" finished-at="2023-08-17T18:22:39 IST" duration-ms="2418" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:06:05 IST" name="beforeMethod" finished-at="2023-08-17T16:06:12 IST" duration-ms="7385" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:22:39 IST" name="beforeMethod" finished-at="2023-08-17T18:22:58 IST" duration-ms="18697" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case2_compareScreenshot()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:06:12 IST" name="Case2_compareScreenshot" finished-at="2023-08-17T16:06:30 IST" duration-ms="18173" status="FAIL">
-          <exception class="javax.imageio.IIOException">
-            <message>
-              <![CDATA[Can't read input file!]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[javax.imageio.IIOException: Can't read input file!
-at java.desktop/javax.imageio.ImageIO.read(ImageIO.java:1310)
-at Functionality.MainPage.Case2_compareScreenshot(MainPage.java:217)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- javax.imageio.IIOException -->
+        <test-method signature="Case2_compareScreenshot()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:22:58 IST" name="Case2_compareScreenshot" finished-at="2023-08-17T18:23:48 IST" duration-ms="50346" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case2_compareScreenshot -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:06:30 IST" name="afterMethod" finished-at="2023-08-17T16:06:31 IST" duration-ms="1282" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:23:48 IST" name="afterMethod" finished-at="2023-08-17T18:23:59 IST" duration-ms="11033" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:06:31 IST" name="beforeMethod" finished-at="2023-08-17T16:06:42 IST" duration-ms="10249" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:23:59 IST" name="beforeMethod" finished-at="2023-08-17T18:24:24 IST" duration-ms="24928" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case3_ContactUs()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:06:42 IST" name="Case3_ContactUs" finished-at="2023-08-17T16:07:12 IST" duration-ms="29965" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-at java.base/java.io.File.<init>(File.java:278)
-at Functionality.MainPage.Case3_ContactUs(MainPage.java:176)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method signature="Case3_ContactUs()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:24:24 IST" name="Case3_ContactUs" finished-at="2023-08-17T18:25:31 IST" duration-ms="66962" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case3_ContactUs -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:07:12 IST" name="afterMethod" finished-at="2023-08-17T16:07:13 IST" duration-ms="1279" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:25:31 IST" name="afterMethod" finished-at="2023-08-17T18:25:45 IST" duration-ms="13530" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:07:13 IST" name="beforeMethod" finished-at="2023-08-17T16:07:20 IST" duration-ms="7181" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:25:45 IST" name="beforeMethod" finished-at="2023-08-17T18:26:06 IST" duration-ms="21459" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Case4_PageText()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:07:20 IST" name="Case4_PageText" finished-at="2023-08-17T16:07:36 IST" duration-ms="16308" status="PASS">
+        <test-method signature="Case4_PageText()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:26:06 IST" name="Case4_PageText" finished-at="2023-08-17T18:26:50 IST" duration-ms="43378" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Case4_PageText -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:07:36 IST" name="afterMethod" finished-at="2023-08-17T16:07:38 IST" duration-ms="1308" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:26:50 IST" name="afterMethod" finished-at="2023-08-17T18:27:02 IST" duration-ms="12103" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="tearDown1()[pri:0, instance:Functionality.MainPage@1af2d44a]" started-at="2023-08-17T16:07:38 IST" name="tearDown1" finished-at="2023-08-17T16:07:38 IST" duration-ms="527" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:27:02 IST" name="beforeMethod" finished-at="2023-08-17T18:27:22 IST" duration-ms="19890" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Case5_ContactUsValidation()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:27:22 IST" name="Case5_ContactUsValidation" finished-at="2023-08-17T18:28:26 IST" duration-ms="64510" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Case5_ContactUsValidation -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:28:26 IST" name="afterMethod" finished-at="2023-08-17T18:28:32 IST" duration-ms="5972" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="tearDown1()[pri:0, instance:Functionality.MainPage@18d87d80]" started-at="2023-08-17T18:28:32 IST" name="tearDown1" finished-at="2023-08-17T18:28:33 IST" duration-ms="1023" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown1 -->

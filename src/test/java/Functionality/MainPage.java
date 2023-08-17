@@ -38,6 +38,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -253,7 +254,7 @@ public class MainPage {
 	
 	@Test
 	public void Case4_PageText() throws IOException, InterruptedException {
-		test=extent.createTest("Test Retrieval Automation");
+		test=extent.createTest("Text Retrieval Automation");
 		
 		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
 		Properties contactDetails=new Properties();
@@ -313,4 +314,76 @@ public class MainPage {
 		}
 
 	}
+
+	@Test
+	public void Case5_ContactUsValidation() throws IOException, InterruptedException {
+		test=extent.createTest("Contact Us Page error message validation Automation");
+		
+		InputStream input = new FileInputStream("src/test/resources/contactUs.properties");
+		Properties contactDetails=new Properties();
+		contactDetails.load(input);
+		
+		contact contactUs = PageFactory.initElements(driver, contact.class);
+		driver.get(contactDetails.getProperty("applicationUrl"));
+		driver.manage().window().maximize();
+		Thread.sleep(3000);
+		
+	    contactUs.acceptCookies.click();
+		contactUs.contactLink.click();
+		contactUs.submit.submit();
+		
+		test.info("Retrieved all error messages from screen");
+	   SoftAssert softAssert = new SoftAssert();
+       softAssert.assertEquals(contactUs.fullNameError.getText(),contactDetails.getProperty("fullNameErrorMsg"));
+       test.info("Validated Full Name related error message");
+       softAssert.assertEquals(contactUs.EmailError.getText(),contactDetails.getProperty("EmailErrorMsg"));
+       test.info("Validated Email related error message");
+       softAssert.assertEquals(contactUs.phoneError.getText(),contactDetails.getProperty("phoneErrorMsg"));
+       test.info("Validated phone related error message");
+       softAssert.assertEquals(contactUs.countryError.getText(),contactDetails.getProperty("countryErrorMsg"));
+       test.info("Validated country related error message");
+       softAssert.assertEquals(contactUs.relationError.getText(),contactDetails.getProperty("relationErrorMsg"));
+       test.info("Validated relationship related error message");
+       softAssert.assertEquals(contactUs.commentsError.getText(),contactDetails.getProperty("commentsError"));
+       test.info("Validated comments related error message");
+       softAssert.assertEquals(contactUs.privacyError.getText(),contactDetails.getProperty("privacyError"));
+       test.info("Validated Privacy related error message");
+       
+       test.info("comparied all error messages from screen with expected messages");
+       softAssert.assertAll();
+       
+	    Thread.sleep(2000);
+			    
+		TakesScreenshot ts4=(TakesScreenshot) driver;
+		File Src4 = ts4.getScreenshotAs(OutputType.FILE);
+		File dest4=new File(contactDetails.getProperty("ErrorScreen1"));
+		FileHandler.copy(Src4, dest4);
+		test.addScreenCaptureFromPath(contactDetails.getProperty("ErrorScreen1"));
+		
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,500)");
+		
+		Thread.sleep(1000);
+		
+		TakesScreenshot ts5=(TakesScreenshot) driver;
+		File Src5 = ts5.getScreenshotAs(OutputType.FILE);
+		File dest5=new File(contactDetails.getProperty("ErrorScreen2"));
+		FileHandler.copy(Src5, dest5);
+		test.addScreenCaptureFromPath(contactDetails.getProperty("ErrorScreen2"));
+		
+		Thread.sleep(1000);
+		
+		JavascriptExecutor js2=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,600)");
+		
+		TakesScreenshot ts6=(TakesScreenshot) driver;
+		File Src6 = ts6.getScreenshotAs(OutputType.FILE);
+		File dest6=new File(contactDetails.getProperty("ErrorScreen3"));
+		FileHandler.copy(Src6, dest6);
+		test.addScreenCaptureFromPath(contactDetails.getProperty("ErrorScreen3"));
+		
+	   
+       test.pass("All error message validations passed");
+	}
+	
 }

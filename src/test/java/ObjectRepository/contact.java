@@ -47,4 +47,27 @@ public class contact {
 	@FindBy(id="edit-privacy-policy")
 	public static WebElement privacyPolicy;
 	
+	@FindBy(id="edit-actions-submit")
+	public static WebElement submit;
+	
+	@FindBy(id="edit-full-name-error")
+	public static WebElement fullNameError;
+	
+	@FindBy(id="edit-email-address-error")
+	public static WebElement EmailError;
+	
+	@FindBy(id="edit-phone-error")
+	public static WebElement phoneError;
+	
+	@FindBy(id="edit-country-error")
+	public static WebElement countryError;
+	
+	@FindBy(id="edit-query-type-error")
+	public static WebElement relationError;
+	
+	@FindBy(id="edit-message-comments-error")
+	public static WebElement commentsError;
+	
+	@FindBy(id="privacy_policy-error")
+	public static WebElement privacyError;
 }
