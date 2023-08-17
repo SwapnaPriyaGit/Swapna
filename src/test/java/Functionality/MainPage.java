@@ -142,9 +142,9 @@ public class MainPage {
 		Country.selectByVisibleText(contactDetails.getProperty("countryName"));
 		TakesScreenshot ts1=(TakesScreenshot) driver;
 		File Src1 = ts1.getScreenshotAs(OutputType.FILE);
-		File dest1=new File("Screenshots\\ContactUs_Screen1.png");
+		File dest1=new File(contactDetails.getProperty("ContactScreen1Path"));
 		FileHandler.copy(Src1, dest1);
-		test.addScreenCaptureFromPath("Screenshots\\ContactUs_Screen1.png");
+		test.addScreenCaptureFromPath(contactDetails.getProperty("ContactScreen1Path"));
 		
 		Select relationship=new Select(contactUs.relationship);
 		relationship.selectByVisibleText(contactDetails.getProperty("relationship"));
@@ -173,9 +173,9 @@ public class MainPage {
 	    
 		TakesScreenshot ts2=(TakesScreenshot) driver;
 		File Src2 = ts2.getScreenshotAs(OutputType.FILE);
-		File dest2=new File(contactDetails.getProperty("Screenshots\\ContactUs_Screen2.png"));
+		File dest2=new File(contactDetails.getProperty("ContactScreen2Path"));
 		FileHandler.copy(Src2, dest2);
-		test.addScreenCaptureFromPath(contactDetails.getProperty("Screenshots\\ContactUs_Screen2.png"));
+		test.addScreenCaptureFromPath(contactDetails.getProperty("ContactScreen2Path"));
 		//Thread.sleep(5000);
 	    
 	    test.pass("Contact Us Page automation success");
